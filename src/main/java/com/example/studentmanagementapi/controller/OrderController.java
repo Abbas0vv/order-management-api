@@ -3,6 +3,7 @@ package com.example.studentmanagementapi.controller;
 import com.example.studentmanagementapi.dto.OrderRequestDto;
 import com.example.studentmanagementapi.dto.OrderResponseDto;
 import com.example.studentmanagementapi.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addOrder(@RequestBody OrderRequestDto orderRequestDto){
-        orderService.AddOrder(orderRequestDto);
+    public void addOrder(@RequestBody @Valid OrderRequestDto orderRequestDto){
+        orderService.addOrder(orderRequestDto);
     }
 
     @GetMapping("/{orderId}")
